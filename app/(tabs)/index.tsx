@@ -13,7 +13,8 @@ export default function App() {
     4, 5, 6, '-', 
     1, 2, 3, '+', 
     0, '.', '!', '^',
-    '√', 'log', '=', 
+    'log', 'sin', 'cos', '√', 
+    'tan', 'cot', '='
   ];
 
   // Hàm tính giai thừa
@@ -35,6 +36,42 @@ export default function App() {
       setCurrentNumber(result);
       return;
     }
+
+    // Xử lý sin
+  if (currentNumber.startsWith('sin')) {
+    let number = parseFloat(currentNumber.slice(3));
+    let result = Math.sin(number * Math.PI / 180).toString(); // Chuyển đổi từ độ sang radian
+    setCurrentNumber(result);
+    return;
+  }
+
+  // Xử lý cos
+  if (currentNumber.startsWith('cos')) {
+    let number = parseFloat(currentNumber.slice(3));
+    let result = Math.cos(number * Math.PI / 180).toString(); // Chuyển đổi từ độ sang radian
+    setCurrentNumber(result);
+    return;
+  }
+
+  // Xử lý tan
+  if (currentNumber.startsWith('tan')) {
+    let number = parseFloat(currentNumber.slice(3));
+    let result = Math.tan(number * Math.PI / 180).toString(); // Chuyển đổi từ độ sang radian
+    setCurrentNumber(result);
+    return;
+  }
+
+  // Xử lý cot
+  if (currentNumber.startsWith('cot')) {
+    let number = parseFloat(currentNumber.slice(3));
+    if (Math.tan(number * Math.PI / 180) === 0) {
+      setCurrentNumber('Error'); // Kiểm tra lỗi chia cho 0
+      return;
+    }
+    let result = (1 / Math.tan(number * Math.PI / 180)).toString(); // Chuyển đổi từ độ sang radian
+    setCurrentNumber(result);
+    return;
+  }
 
     let lastArr = currentNumber[currentNumber.length - 1];
 
@@ -91,6 +128,22 @@ export default function App() {
     } else if (buttonPressed === 'log') {  // Xử lý nút log
       Vibration.vibrate(35);
       setCurrentNumber('log' + currentNumber);
+      return;
+    } else if (buttonPressed === 'sin') {
+      Vibration.vibrate(35);
+      setCurrentNumber('sin' + currentNumber);
+      return;
+    } else if (buttonPressed === 'cos') {
+      Vibration.vibrate(35);
+      setCurrentNumber('cos' + currentNumber);
+      return;
+    } else if (buttonPressed === 'tan') {
+      Vibration.vibrate(35);
+      setCurrentNumber('tan' + currentNumber);
+      return;
+    } else if (buttonPressed === 'cot') {
+      Vibration.vibrate(35);
+      setCurrentNumber('cot' + currentNumber);
       return;
     } else if (buttonPressed === '!') {
       Vibration.vibrate(35);
@@ -184,10 +237,10 @@ export default function App() {
       </View>
       <View style={styles.buttons}>
         {buttons.map((button) =>
-          button === '=' ? (
+          button === '=' || button === '√' ? (
             <TouchableOpacity
               key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#008080' : '#708090'), minWidth: '25%' }]} // Màu nút '='
+              style={[styles.button, { backgroundColor: (darkMode ? '#008080' : '#708090'), minWidth: '24%' }]} // Màu nút '='
               onPress={() => handleInput(button)}
             >
               <Text style={[styles.textButton, { color: 'white', fontSize: 28 }]}>{button}</Text>
@@ -232,10 +285,10 @@ export default function App() {
             >
               <Text style={styles.textButton}>{button}</Text>
             </TouchableOpacity>
-          ) : button === '√' ? (
+          ) : button === 'sin' ? (
             <TouchableOpacity
               key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#303946' : '#fff'), minWidth: '37%' }]}
+              style={[styles.button, { backgroundColor: (darkMode ? '#303946' : '#fff'), minWidth: '24%' }]}
               onPress={() => handleInput(button)}
             >
               <Text style={styles.textButton}>{button}</Text>
@@ -243,7 +296,31 @@ export default function App() {
           ) : button === 'log' ? (
             <TouchableOpacity
               key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#303946' : '#fff'), minWidth: '38%' }]}
+              style={[styles.button, { backgroundColor: (darkMode ? '#303946' : '#fff'), minWidth: '24%' }]}
+              onPress={() => handleInput(button)}
+            >
+              <Text style={styles.textButton}>{button}</Text>
+            </TouchableOpacity>
+          ) : button === 'cos' ? (
+            <TouchableOpacity
+              key={button}
+              style={[styles.button, { backgroundColor: (darkMode ? '#303946' : '#fff'), minWidth: '24%' }]}
+              onPress={() => handleInput(button)}
+            >
+              <Text style={styles.textButton}>{button}</Text>
+            </TouchableOpacity>
+          ) : button === 'tan' ? (
+            <TouchableOpacity
+              key={button}
+              style={[styles.button, { backgroundColor: (darkMode ? '#303946' : '#fff'), minWidth: '36%' }]}
+              onPress={() => handleInput(button)}
+            >
+              <Text style={styles.textButton}>{button}</Text>
+            </TouchableOpacity>
+          ) : button === 'cot' ? (
+            <TouchableOpacity
+              key={button}
+              style={[styles.button, { backgroundColor: (darkMode ? '#303946' : '#fff'), minWidth: '37%' }]}
               onPress={() => handleInput(button)}
             >
               <Text style={styles.textButton}>{button}</Text>
