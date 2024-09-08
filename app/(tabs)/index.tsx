@@ -156,7 +156,7 @@ export default function App() {
       borderColor: darkMode ? '#3f4d5b' : '#e5e5e5',
       alignItems: 'center',
       justifyContent: 'center',
-      minWidth: '22%',
+      minWidth: '24%',
       minHeight: '20%',
       flex: 1,
     },
@@ -175,7 +175,7 @@ export default function App() {
         <TouchableOpacity style={styles.themeButton} onPress={() => setDarkMode(!darkMode)}>
           <Entypo
             name={darkMode ? 'light-up' : 'moon'}
-            size={24}
+            size={28}
             color={darkMode ? 'white' : 'black'}
           />
         </TouchableOpacity>
@@ -187,7 +187,7 @@ export default function App() {
           button === '=' ? (
             <TouchableOpacity
               key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#008080' : '#708090'), minWidth: '24%' }]} // Màu nút '='
+              style={[styles.button, { backgroundColor: (darkMode ? '#008080' : '#708090'), minWidth: '25%' }]} // Màu nút '='
               onPress={() => handleInput(button)}
             >
               <Text style={[styles.textButton, { color: 'white', fontSize: 28 }]}>{button}</Text>
@@ -219,7 +219,7 @@ export default function App() {
           ) : button === 'DEL' ? (
             <TouchableOpacity
               key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#414853' : '#ededed'), minWidth: '38%' }]}
+              style={[styles.button, { backgroundColor: (darkMode ? '#414853' : '#ededed'), minWidth: '36%' }]}
               onPress={() => handleInput(button)}
             >
               <Text style={styles.textButton}>{button}</Text>
