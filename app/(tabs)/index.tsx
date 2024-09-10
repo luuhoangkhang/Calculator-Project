@@ -174,7 +174,7 @@ export default function App() {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: darkMode ? '#303946' : '#fff',
+      backgroundColor: darkMode ? '#022832' : '#F1DEBC',
     },
     buttons: {
       width: '100%',
@@ -184,12 +184,12 @@ export default function App() {
     },
     resultText: {
       maxHeight: 45,
-      color: "#00b9d6",
+      color: darkMode ? '#0A7A7A' : '#4C2113',
       margin: 15,
       fontSize: 35,
     },
     historyText: {
-      color: darkMode ? '#B5B7BB' : '#7c7c7c',
+      color: darkMode ? '#0A7A7A' : '#4C2113',
       fontSize: 20,
       marginRight: 10,
       alignSelf: 'flex-end',
@@ -224,7 +224,7 @@ export default function App() {
 
   return (
     <View>
-      <View style={styles.results}>
+      <View style={[{ paddingTop: 50 }, styles.results]}>
         <TouchableOpacity style={styles.themeButton} onPress={() => setDarkMode(!darkMode)}>
           <Entypo
             name={darkMode ? 'light-up' : 'moon'}
@@ -240,7 +240,7 @@ export default function App() {
           button === '=' || button === '√' ? (
             <TouchableOpacity
               key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#008080' : '#708090'), minWidth: '24%' }]} // Màu nút '='
+              style={[styles.button, { backgroundColor: (darkMode ? '#008080' : '#B38B60'), minWidth: '24%' }]} // Màu nút '='
               onPress={() => handleInput(button)}
             >
               <Text style={[styles.textButton, { color: 'white', fontSize: 28 }]}>{button}</Text>
@@ -248,23 +248,15 @@ export default function App() {
           ) : button === '/' || button === '*' || button === '-' || button === '+' || button === '^' ? (
             <TouchableOpacity
               key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#008080' : '#708090') }]}
+              style={[styles.button, { backgroundColor: (darkMode ? '#008080' : '#B38B60') }]}
               onPress={() => handleInput(button)}
             >
               <Text style={[styles.textButton, { color: 'white', fontSize: 28 }]}>{button}</Text>
             </TouchableOpacity>
-          ) : button === '!' ? (
+          ) : button === '0' || button === '.' || button === '!' ? (
             <TouchableOpacity
               key={button}
-              style={[styles.button, styles.specialButton, { minWidth: '24%' }]}
-              onPress={() => handleInput(button)}
-            >
-              <Text style={[styles.textButton, { color: darkMode ? '#b5b7bb' : '#7c7c7c' }]}>{button}</Text>
-            </TouchableOpacity>
-          ) : button === '0' || button === '.' || button === '^' || button === '!' ? (
-            <TouchableOpacity
-              key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#303946' : '#fff'), minWidth: '24%' }]}
+              style={[styles.button, { backgroundColor: (darkMode ? '#022832' : '#FFE5CC'), minWidth: '24%' }]}
               onPress={() => handleInput(button)}
             >
               <Text style={styles.textButton}>{button}</Text>
@@ -272,7 +264,7 @@ export default function App() {
           ) : button === 'DEL' ? (
             <TouchableOpacity
               key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#414853' : '#ededed'), minWidth: '36%' }]}
+              style={[styles.button, { backgroundColor: (darkMode ? '#06333F' : '#DCB485'), minWidth: '36%' }]}
               onPress={() => handleInput(button)}
             >
               <Text style={styles.textButton}>{button}</Text>
@@ -280,7 +272,7 @@ export default function App() {
           ): button === 'C' ? (
             <TouchableOpacity
               key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#414853' : '#ededed'), minWidth: '37%' }]}
+              style={[styles.button, { backgroundColor: (darkMode ? '#06333F' : '#DCB485'), minWidth: '37%' }]}
               onPress={() => handleInput(button)}
             >
               <Text style={styles.textButton}>{button}</Text>
@@ -288,7 +280,7 @@ export default function App() {
           ) : button === 'sin' ? (
             <TouchableOpacity
               key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#303946' : '#fff'), minWidth: '24%' }]}
+              style={[styles.button, { backgroundColor: (darkMode ? '#022832' : '#FFE5CC'), minWidth: '24%' }]}
               onPress={() => handleInput(button)}
             >
               <Text style={styles.textButton}>{button}</Text>
@@ -296,7 +288,7 @@ export default function App() {
           ) : button === 'log' ? (
             <TouchableOpacity
               key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#303946' : '#fff'), minWidth: '24%' }]}
+              style={[styles.button, { backgroundColor: (darkMode ? '#022832' : '#FFE5CC'), minWidth: '24%' }]}
               onPress={() => handleInput(button)}
             >
               <Text style={styles.textButton}>{button}</Text>
@@ -304,7 +296,7 @@ export default function App() {
           ) : button === 'cos' ? (
             <TouchableOpacity
               key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#303946' : '#fff'), minWidth: '24%' }]}
+              style={[styles.button, { backgroundColor: (darkMode ? '#022832' : '#FFE5CC'), minWidth: '24%' }]}
               onPress={() => handleInput(button)}
             >
               <Text style={styles.textButton}>{button}</Text>
@@ -312,7 +304,7 @@ export default function App() {
           ) : button === 'tan' ? (
             <TouchableOpacity
               key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#303946' : '#fff'), minWidth: '36%' }]}
+              style={[styles.button, { backgroundColor: (darkMode ? '#022832' : '#FFE5CC'), minWidth: '36%' }]}
               onPress={() => handleInput(button)}
             >
               <Text style={styles.textButton}>{button}</Text>
@@ -320,7 +312,7 @@ export default function App() {
           ) : button === 'cot' ? (
             <TouchableOpacity
               key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#303946' : '#fff'), minWidth: '37%' }]}
+              style={[styles.button, { backgroundColor: (darkMode ? '#022832' : '#FFE5CC'), minWidth: '37%' }]}
               onPress={() => handleInput(button)}
             >
               <Text style={styles.textButton}>{button}</Text>
@@ -328,7 +320,7 @@ export default function App() {
           ) : (
             <TouchableOpacity
               key={button}
-              style={[styles.button, { backgroundColor: (darkMode ? '#303946' : '#fff') }]}
+              style={[styles.button, { backgroundColor: (darkMode ? '#022832' : '#FFE5CC') }]}
               onPress={() => handleInput(button)}
             >
               <Text style={styles.textButton}>{button}</Text>
